@@ -30,8 +30,8 @@ loop do
     urls << post.find_element(:tag_name, 'h2').find_element(:tag_name, 'a').attribute("href")
   end
 
-  if d.find_elements(:xpath, '//*[@class="next page-numbers"]').size > 0
-    d.find_element(:xpath, '//*[@class="next page-numbers"]').click
+  if d.find_elements(:xpath, '//*[@class="next"]/nav/div/a[2]').size > 0
+    d.find_element(:xpath, '//*[@class="next"]/nav/div/a[2]').click
   else
     break
   end
@@ -39,7 +39,7 @@ loop do
 end
 
   urls.each do |url|
-    puts url
+    d.get(url)
   end
 
 # 2秒待機
